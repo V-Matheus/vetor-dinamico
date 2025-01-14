@@ -37,11 +37,30 @@ unsigned int capacity() {
     return capacity_;
 } // Retorna o espaço reservado para armazenar os elementos
 double percent_occupied() {
-    return (static_cast<double>(size_)  / static_cast<double>(capacity_));
+   return (static_cast<double>(size_) / static_cast<double>(capacity_)) * 100;
+   // static_cast para transformar para double e depois multiplicar por 100 para obter o percentual
 } // Retorna um valor entre 0.0 a 1.0 com o percentual da  memória usada.
 
 bool insert_at(unsigned int index, int value) {
-   
+  // Verifica se o índice é válido
+   if(index > size_) {
+       return false;
+   }
+
+   // Se o vetor estiver cheio, aumenta a capacidade
+    if(size_ == capacity_) {
+        increase_capacity();
+    }
+
+    // Desloca os elementos para a direita
+    for(int i = size_; i > index; --i) {
+        data[i] = data[i - 1];
+    }
+
+    // Insere o novo elemento e incrementa o tamanho
+    data[index] = value;
+    ++size_;
+    return true;
 } // Insere elemento no índice index
 bool remove_at(unsigned int index) {} // Remove elemento do índice index
 int get_at(unsigned int index) {} // Retorna elemento no índice index,
