@@ -89,10 +89,14 @@ int get_at(unsigned int index) {
 } // Retorna elemento no índice index,
 
 
-// −1 se índice inválido
 
 
-void clear() {} // Remove todos os elementos, deixando o vetor no estado inicial
+void clear() {
+    // Remove todos os elementos, deixando o vetor no estado inicial
+    size_ = 0;
+    capacity_ = 8;
+    data = new int[capacity_];
+} // Remove todos os elementos, deixando o vetor no estado inicial
 void push_back(int value) {} // Adiciona um elemento no ``final'' do vetor
 void push_front(int value) {} // Adiciona um elemento no ``início'' do vetor
 bool pop_back() {} // Remove um elemento do ``final'' do vetor

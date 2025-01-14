@@ -30,5 +30,10 @@ int main() {
     }
     cout << endl;
 
+    list.clear();
+
+    cout << "Capacidade após limpeza: " << list.capacity() << endl;
+    cout << "Tamanho após limpeza: " << list.size() << endl;
+
     return 0;
 }
