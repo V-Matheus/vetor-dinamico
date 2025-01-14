@@ -159,16 +159,36 @@ int front(){
        return data[0];
 } // Retorna o elemento do ``início'' do vetor
 bool remove(int value) {
-    return value;
+    for(std::size_t i = 0; i < size_; ++i) {
+        if(data[i] == value) {
+            // Desloca os elementos para a esquerda
+            for(std::size_t j = i; j < size_ - 1; ++j) {
+                data[j] = data[j + 1];
+            }
 
+            // Decrementa o tamanho
+            --size_;
+            return true;
+        }
+    }
+    return false;
 } // Remove value do vetor caso esteja presente
 int find(int value) {
-    return value;
-
+    for (std::size_t i = 0; i < size_; ++i) {
+        if (data[i] == value) {
+            return i;
+        }
+    }
+    return -1;
 } // Retorna o índice de value, −1 caso value não esteja presente
 int count(int value) {
-    return value;
-
+    int count = 0;
+    for (std::size_t i = 0; i < size_; ++i) {
+        if (data[i] == value) {
+            ++count;
+        }
+    }
+    return count;
 } // Retorna quantas vezes value occorre no vetor
 int sum() {
     return 0;
