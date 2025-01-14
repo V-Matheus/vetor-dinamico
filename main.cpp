@@ -66,5 +66,25 @@ int main() {
     }
     cout << endl;
 
+    cout << '\n' << endl;
+
+
+    cout << "Insercao de um elemento no 'inicio' do array" << endl;
+
+    list.push_front(0);
+    list.push_front(-10);
+    list.push_front(-20);
+    list.push_front(-30);
+
+    cout << "Capacidade apos insercao: " << list.capacity() << endl;
+    cout << "Tamanho apos insercao: " << list.size() << endl;
+    cout << "Percentual de ocupacao apos insercao: " << list.percent_occupied() << '%' << endl;
+     cout << "Array apos insercao:" << endl;
+    for (unsigned int i = 0; i < list.size(); ++i) {
+        cout << list.get_at(i) << " ";
+    }
+    cout << endl;
+
+    cout << '\n' << endl;
     return 0;
 }

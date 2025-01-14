@@ -107,7 +107,22 @@ void push_back(int value) {
     data[size_] = value;
     ++size_;
 } // Adiciona um elemento no ``final'' do vetor
-void push_front(int value) {} // Adiciona um elemento no ``início'' do vetor
+void push_front(int value) {
+    // Se o vetor estiver cheio, aumenta a capacidade
+    if(size_ == capacity_) {
+        increase_capacity();
+    }
+
+    // Desloca os elementos para a direita
+
+    for(int i = size_; i > 0; --i) {
+        data[i] = data[i - 1];
+    }
+
+    // Adiciona o novo elemento e incrementa o tamanho
+    data[0] = value;
+    ++size_;
+} // Adiciona um elemento no ``início'' do vetor
 bool pop_back() {} // Remove um elemento do ``final'' do vetor
 bool pop_front() {} // Remove um elemento do ``início'' do vetor
 int back(){} // Retorna o elemento do ``final'' do vetor
