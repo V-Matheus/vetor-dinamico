@@ -86,5 +86,20 @@ int main() {
     cout << endl;
 
     cout << '\n' << endl;
+    
+    cout << "Removendo um elemento no 'final' do array" << endl;
+
+    list.pop_back();
+
+    cout << "Capacidade apos remocao: " << list.capacity() << endl;
+    cout << "Tamanho apos remocao: " << list.size() << endl;
+    cout << "Percentual de ocupacao apos remocao: " << list.percent_occupied() << '%' << endl;
+     cout << "Array apos remocao:" << endl;
+    for (unsigned int i = 0; i < list.size(); ++i) {
+        cout << list.get_at(i) << " ";
+    }
+    cout << endl;
+
+    cout << '\n' << endl;
     return 0;
 }

@@ -123,7 +123,16 @@ void push_front(int value) {
     data[0] = value;
     ++size_;
 } // Adiciona um elemento no ``início'' do vetor
-bool pop_back() {} // Remove um elemento do ``final'' do vetor
+bool pop_back() {
+    // Se o vetor estiver vazio, não é possível remover
+    if(size_ == 0) {
+        return false;
+    }
+
+    // Decrementa o tamanho
+    --size_;
+    return true;
+} // Remove um elemento do ``final'' do vetor
 bool pop_front() {} // Remove um elemento do ``início'' do vetor
 int back(){} // Retorna o elemento do ``final'' do vetor
 int front(){} // Retorna o elemento do ``início'' do vetor
