@@ -77,7 +77,16 @@ bool remove_at(unsigned int index) {
      --size_;
      return true;
 } // Remove elemento do índice index
-int get_at(unsigned int index) {} // Retorna elemento no índice index,
+int get_at(unsigned int index) {
+
+ // Retorna elemento no índice index, −1 se índice inválido
+    if(index > size_) {
+        return -1;
+    }
+
+    return data[index];
+
+} // Retorna elemento no índice index,
 
 
 // −1 se índice inválido
