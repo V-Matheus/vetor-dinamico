@@ -116,5 +116,17 @@ int main() {
     cout << endl;
 
     cout << '\n' << endl;
+
+    cout << "Buscando o 'ultimo' elemento do array" << endl;
+
+    cout << "Ultimo elemento: " << list.back() << endl;
+
+    cout << '\n' << endl;
+
+     cout << "Buscando o 'primeiro' elemento do array" << endl;
+
+    cout << "Primeiro elemento: " << list.front() << endl;
+
+    cout << '\n' << endl;
     return 0;
 }

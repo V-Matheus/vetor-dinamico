@@ -153,11 +153,10 @@ bool pop_front() {
     return true;
 } // Remove um elemento do ``início'' do vetor
 int back(){
-    return 0;
+    return data[size_ - 1];
 } // Retorna o elemento do ``final'' do vetor
 int front(){
-    return 0;
-
+       return data[0];
 } // Retorna o elemento do ``início'' do vetor
 bool remove(int value) {
     return value;
