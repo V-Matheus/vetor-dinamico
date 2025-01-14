@@ -8,17 +8,31 @@ int* data;
 unsigned int size_, capacity_;
 
 void increase_capacity() {
- capacity_ *= 2;
- int *new_node = new int[capacity_];
+   // Se a capacidade estiver cheia, dobra a capacidade
+    if (size_ >= capacity_) {
+        capacity_ *= 2;
+    }
+    // Se o tamanho for menor ou igual a metade da capacidade e a capacidade for maior que 8, divide a capacidade por 2
+    else if (size_ <= capacity_ / 2 && capacity_ > 8) {
+        capacity_ /= 2;
+    }
 
+    // Se a capacidade foi ajustada, cria o novo vetor com a capacidade ajustada
+    int *new_node = new int[capacity_];
 
- for(int i = 0; i < size_; ++i) {
-    new_node[i] = data[i];
- }
+    // Copia os dados para o novo vetor
+    for (unsigned int i = 0; i < size_; ++i) {
+        new_node[i] = data[i];
+    }
 
-int *node_data = data;
-data = new_node;
-delete [] node_data;
+    // Libera a memória do vetor antigo e faz o novo ponteiro apontar para o novo vetor
+    delete[] data;
+    data = new_node;
+
+    // Chama a função recursivamente caso a capacidade tenha sido alterada
+    if (size_ <= capacity_ / 2 && capacity_ > 8) {
+        increase_capacity();
+    }
 }
 
 public:
@@ -53,7 +67,7 @@ bool insert_at(unsigned int index, int value) {
     }
 
     // Desloca os elementos para a direita
-    for(int i = size_; i > index; --i) {
+       for(std::size_t i = size_; i > index; --i) {
         data[i] = data[i - 1];
     }
 
@@ -68,10 +82,9 @@ bool remove_at(unsigned int index) {
    }
 
     // Desloca os elementos para a esquerda
-     for(int i = index; i < size_ - 1; ++i) {
-          data[i] = data[i + 1];
-     }
-
+       for(std::size_t i = index; i < size_ - 1; ++i) {
+        data[i] = data[i + 1];
+    }
     
      // Decrementa o tamanho
      --size_;
@@ -86,10 +99,7 @@ int get_at(unsigned int index) {
 
     return data[index];
 
-} // Retorna elemento no índice index,
-
-
-
+} // Retorna elemento no índice
 
 void clear() {
     // Remove todos os elementos, deixando o vetor no estado inicial
@@ -133,12 +143,31 @@ bool pop_back() {
     --size_;
     return true;
 } // Remove um elemento do ``final'' do vetor
-bool pop_front() {} // Remove um elemento do ``início'' do vetor
-int back(){} // Retorna o elemento do ``final'' do vetor
-int front(){} // Retorna o elemento do ``início'' do vetor
-bool remove(int value) {} // Remove value do vetor caso esteja presente
-int find(int value) {} // Retorna o índice de value, −1 caso value não esteja presente
-int count(int value) {} // Retorna quantas vezes value occorre no vetor
-int sum() {} // Retorna a soma dos elementos do vetor
+bool pop_front() {
+    return true;
+} // Remove um elemento do ``início'' do vetor
+int back(){
+    return 0;
+} // Retorna o elemento do ``final'' do vetor
+int front(){
+    return 0;
+
+} // Retorna o elemento do ``início'' do vetor
+bool remove(int value) {
+    return value;
+
+} // Remove value do vetor caso esteja presente
+int find(int value) {
+    return value;
+
+} // Retorna o índice de value, −1 caso value não esteja presente
+int count(int value) {
+    return value;
+
+} // Retorna quantas vezes value occorre no vetor
+int sum() {
+    return 0;
+
+} // Retorna a soma dos elementos do vetor
 };
 #endif // __ARRAY_LIST_IFRN__
