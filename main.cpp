@@ -143,5 +143,41 @@ int main() {
     cout << endl;
 
     cout << '\n' << endl;
+
+    cout << "Buscando o indice pelo valor no array" << endl;
+
+    cout << "Valor da busca (20): " << list.find(20) << endl;
+    cout << "Array atual:" << endl;
+    for (unsigned int i = 0; i < list.size(); ++i) {
+        cout << list.get_at(i) << " ";
+    }
+    cout << endl;
+
+    cout << '\n' << endl;
+
+    cout << "Contando quantas vezes o valor aparece no array" << endl;
+
+    list.push_front(20);
+    list.push_back(20);
+
+    cout << "Valor da busca (20): " << list.count(20) << endl;
+    cout << "Array atual:" << endl;
+    for (unsigned int i = 0; i < list.size(); ++i) {
+        cout << list.get_at(i) << " ";
+    }
+    cout << endl;
+
+    cout << '\n' << endl;
+
+    cout << "Somando valores do array" << endl;
+
+    cout << "Soma dos valores: " << list.sum() << endl;
+    cout << "Array atual:" << endl;
+    for (unsigned int i = 0; i < list.size(); ++i) {
+        cout << list.get_at(i) << " ";
+    }
+    cout << endl;
+
+    cout << '\n' << endl;
     return 0;
 }

@@ -191,7 +191,11 @@ int count(int value) {
     return count;
 } // Retorna quantas vezes value occorre no vetor
 int sum() {
-    return 0;
+    int sum = 0;
+    for (std::size_t i = 0; i < size_; ++i) {
+        sum += data[i];
+    }
+    return sum;
 
 } // Retorna a soma dos elementos do vetor
 };
