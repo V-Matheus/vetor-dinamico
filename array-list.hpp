@@ -1,23 +1,22 @@
 #ifndef __ARRAY_LIST_IFRN__
 #define __ARRAY_LIST_IFRN__
 
-
 class array_list {
 private:
 int* data;
 unsigned int size_, capacity_;
 
 void increase_capacity() {
-   // Se a capacidade estiver cheia, dobra a capacidade
+      // Se a capacidade estiver cheia, dobra a capacidade
     if (size_ >= capacity_) {
         capacity_ *= 2;
     }
     // Se o tamanho for menor ou igual a metade da capacidade e a capacidade for maior que 8, divide a capacidade por 2
-    else if (size_ <= capacity_ / 2 && capacity_ > 8) {
+    else if (size_ <= capacity_ / 2 && capacity_ >= 8) {
         capacity_ /= 2;
     }
 
-    // Se a capacidade foi ajustada, cria o novo vetor com a capacidade ajustada
+    // Cria um novo vetor com a capacidade ajustada
     int *new_node = new int[capacity_];
 
     // Copia os dados para o novo vetor
@@ -28,11 +27,6 @@ void increase_capacity() {
     // Libera a memória do vetor antigo e faz o novo ponteiro apontar para o novo vetor
     delete[] data;
     data = new_node;
-
-    // Chama a função recursivamente caso a capacidade tenha sido alterada
-    if (size_ <= capacity_ / 2 && capacity_ > 8) {
-        increase_capacity();
-    }
 }
 
 public:
@@ -144,6 +138,18 @@ bool pop_back() {
     return true;
 } // Remove um elemento do ``final'' do vetor
 bool pop_front() {
+    // Se o vetor estiver vazio, não é possível remover
+    if(size_ == 0) {
+        return false;
+    }
+
+    // Desloca os elementos para a esquerda
+    for(std::size_t i = 0; i < size_ - 1; ++i) {
+        data[i] = data[i + 1];
+    }
+
+    // Decrementa o tamanho
+    --size_;
     return true;
 } // Remove um elemento do ``início'' do vetor
 int back(){
