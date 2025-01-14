@@ -62,7 +62,21 @@ bool insert_at(unsigned int index, int value) {
     ++size_;
     return true;
 } // Insere elemento no índice index
-bool remove_at(unsigned int index) {} // Remove elemento do índice index
+bool remove_at(unsigned int index) {
+      if(index > size_) {
+       return false;
+   }
+
+    // Desloca os elementos para a esquerda
+     for(int i = index; i < size_ - 1; ++i) {
+          data[i] = data[i + 1];
+     }
+
+    
+     // Decrementa o tamanho
+     --size_;
+     return true;
+} // Remove elemento do índice index
 int get_at(unsigned int index) {} // Retorna elemento no índice index,
 
 
