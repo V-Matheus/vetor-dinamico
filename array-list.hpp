@@ -97,7 +97,16 @@ void clear() {
     capacity_ = 8;
     data = new int[capacity_];
 } // Remove todos os elementos, deixando o vetor no estado inicial
-void push_back(int value) {} // Adiciona um elemento no ``final'' do vetor
+void push_back(int value) {
+    // Se o vetor estiver cheio, aumenta a capacidade
+    if(size_ == capacity_) {
+        increase_capacity();
+    }
+
+    // Adiciona o novo elemento e incrementa o tamanho
+    data[size_] = value;
+    ++size_;
+} // Adiciona um elemento no ``final'' do vetor
 void push_front(int value) {} // Adiciona um elemento no ``início'' do vetor
 bool pop_back() {} // Remove um elemento do ``final'' do vetor
 bool pop_front() {} // Remove um elemento do ``início'' do vetor
