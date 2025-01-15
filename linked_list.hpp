@@ -199,14 +199,24 @@ bool pop_front() {
   int_node*  to_delete = head;
   head = head->next;
   head->prev = nullptr;
-  
+
   delete to_delete;
   size_--;
   return true;
 } // Remove um elemento do ``início'' do vetor
 int back(){
+  if(tail == nullptr) {
+    return -1;
+  }
+
+  return tail->value;
 } // Retorna o elemento do ``final'' do vetor
 int front(){
+  if(head == nullptr) {
+    return -1;
+  }
+
+  return head->value;
 } // Retorna o elemento do ``início'' do vetor
 bool remove(int value) {
 } // Remove value do vetor caso esteja presente

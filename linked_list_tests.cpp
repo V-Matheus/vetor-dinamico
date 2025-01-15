@@ -71,7 +71,7 @@ int main() {
 
   cout << '\n' << endl;
 
-    cout << "Removendo elementos na primeira posicao do array" << endl;
+  cout << "Removendo elementos na primeira posicao do array" << endl;
 
   list.pop_front();
 
@@ -83,5 +83,14 @@ int main() {
 
   cout << '\n' << endl;
 
-    return 0;
+
+  cout << "Valor do ultimo elemento do array: " << list.back() << endl;
+
+  cout << '\n' << endl;
+
+  cout << "Valor do primeiro elemento do array: " << list.front() << endl;
+
+  cout << '\n' << endl;
+
+  return 0;
 }
