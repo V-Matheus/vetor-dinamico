@@ -105,6 +105,23 @@ int main() {
   cout << '\n' << endl;
 
    cout << "Valor do index do valor (10) no array:  " << list.find(10) << endl;
+      cout << "Array atual:" << endl;
+  for (unsigned int i = 0; i < list.size(); ++i) {
+      cout << list.get_at(i) << " ";
+  }
+  cout << endl;
+
+  cout << '\n' << endl;
+
+  list.push_back(10);
+  list.push_back(10);
+
+  cout << "Contar quantas vezes o valor (10) aparece no array:  " << list.count(10) << endl;
+  cout << "Array atual:" << endl;
+  for (unsigned int i = 0; i < list.size(); ++i) {
+      cout << list.get_at(i) << " ";
+  }
+  cout << endl;
 
   cout << '\n' << endl;
 

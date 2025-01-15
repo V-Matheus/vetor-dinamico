@@ -248,6 +248,16 @@ int find(int value) {
   return -1;
 } // Retorna o índice de value, −1 caso value não esteja presente
 int count(int value) {
+  int_node* current = head;
+  int count = 0;
+  for(int i  =  0; i < size_; i++) {
+    if(current->value == value) {
+      count++;
+    }
+    current = current->next;
+  }
+
+  return count;
 } // Retorna quantas vezes value occorre no vetor
 int sum() {
 } // Retorna a soma dos elementos do vetor
