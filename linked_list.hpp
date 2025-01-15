@@ -15,7 +15,7 @@ linked_list() {
   size_ = 0;
 }
 ~linked_list() {
-
+clear();
 }
 unsigned int size() {
   return size_;
@@ -73,7 +73,7 @@ bool insert_at(unsigned int index, int value) {
   new_node->prev = current;
   new_node->next = current->next;
   current->next = new_node;
-  
+
   size_++;
   return true; 
 } // Insere elemento no índice index
@@ -139,11 +139,17 @@ int get_at(unsigned int index) {
 
   return current->value;
 
-} // Retorna elemento no índice index,
+} // Retorna elemento no índice index, −1 se índice inválido
 
-// −1 se índice inválido
-
-void clear() {} // Remove todos os elementos, deixando o vetor no estado inicial
+void clear() {
+  while (head != nullptr) {
+        int_node* to_delete = head;
+        head = head->next;
+        delete to_delete;
+    }
+    tail = nullptr;
+    size_ = 0;
+} // Remove todos os elementos, deixando o vetor no estado inicial
 void push_back(int value) {
 } // Adiciona um elemento no ``final'' do vetor
 void push_front(int value) {

@@ -17,5 +17,18 @@ int main() {
     }
   cout << endl;
 
+  cout << '\n' << endl;
+
+  cout << "Limpando elementos no array" << endl;
+
+  list.clear();
+
+  cout << "Array apos limpeza:" << endl;
+    for (unsigned int i = 0; i < list.size(); ++i) {
+        cout << list.get_at(i) << " ";
+    }
+  cout << endl;
+
+
     return 0;
 }
