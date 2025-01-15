@@ -92,5 +92,17 @@ int main() {
 
   cout << '\n' << endl;
 
+  cout << "Removendo o valor (0) do array: " << endl;
+
+  list.remove(0);
+
+  cout << "Array apos remocao:" << endl;
+  for (unsigned int i = 0; i < list.size(); ++i) {
+      cout << list.get_at(i) << " ";
+  }
+  cout << endl;
+
+  cout << '\n' << endl;
+
   return 0;
 }
