@@ -409,3 +409,389 @@ O método `sum` calcula a soma de todos os elementos no array. Ele faz isso da s
 2. Percorre o array `data` do início ao fim.
 3. Soma cada elemento do array à variável `sum`.
 4. Após percorrer todo o array, retorna o valor de `sum`.
+
+# Linked List
+
+Essa classe é voltada para a criação de uma lista encadeada, onde o usuário pode adicionar, remover e acessar os elementos da lista. A lista é composta por nós, onde cada nó contém um valor e ponteiros para o próximo e anterior nó.
+
+## Métodos
+
+- Construtor
+
+```
+linked_list() {
+  head = nullptr;
+  tail = nullptr;
+  size_ = 0;
+}
+```
+
+O construtor da classe é responsável por inicializar os atributos da classe. Ele define o início e o final da lista como `nullptr` e o tamanho (`size_`) como 0.
+
+<br>
+<br>
+<br>
+
+- Destrutor
+
+```
+~linked_list() {
+  clear();
+}
+```
+
+O destrutor é responsável por liberar a memória alocada para os nós da lista quando o objeto é destruído, chamando o método `clear()` para garantir que todos os nós sejam removidos da lista.
+
+<br>
+<br>
+<br>
+
+- size
+
+```
+unsigned int size() {
+  return size_;
+}
+```
+
+O método `size` retorna o tamanho atual da lista, que é armazenado no atributo `size_`.
+
+<br>
+<br>
+<br>
+
+- capacity
+
+```
+unsigned int capacity() {
+  return size_;
+}
+```
+
+O método `capacity` retorna o espaço reservado para os elementos da lista, que é igual ao tamanho atual da lista (`size_`), já que a alocação é dinâmica.
+
+<br>
+<br>
+<br>
+
+- percent_occupied
+
+```
+double percent_occupied() {
+  return 1;
+}
+```
+
+O método `percent_occupied` retorna um valor fixo de 1.0, pois a lista encadeada não possui uma capacidade predefinida e o espaço utilizado é gerenciado dinamicamente. Esse valor é um marcador para indicar a ocupação total da lista.
+
+<br>
+<br>
+<br>
+
+- insert_at
+
+```
+bool insert_at(unsigned int index, int value) {
+  if(index > size_) {
+    return false;
+  }
+  int_node* new_node = new int_node;
+  new_node->value = value;
+
+  if(index == 0) {
+    new_node->next = head;
+    new_node->prev = nullptr;
+
+    if (head) {
+        head->prev = new_node;
+    }
+ 
+    head = new_node;
+    if (tail == nullptr) { 
+      tail = new_node;
+    }
+    size_++;
+    return true;
+  }
+
+  if (index == size_) {
+    new_node->next = nullptr;
+    new_node->prev = tail;
+
+    if(tail) {
+      tail->next = new_node;
+    }
+    tail = new_node;
+    size_++;
+    return true;
+  }
+
+  int_node* current = head;
+  for(unsigned int i = 0; i < index - 1; ++i) {
+    current = current->next;
+  }
+
+  new_node->next = current->next;
+  new_node->prev = current;
+
+  if(current->next) {
+    current->next->prev = new_node;
+  }
+
+  current->next = new_node;
+  size_++;
+  return true;
+}
+```
+
+O método `insert_at` insere um valor em uma posição específica da lista. Ele verifica se o índice fornecido é válido (menor ou igual ao tamanho atual da lista). Se o índice for inválido, o método retorna `false`.
+
+Se o índice for 0, o novo nó é inserido no início da lista. Se o índice for igual ao tamanho atual da lista, o novo nó é inserido no final. Caso contrário, o método percorre a lista até o índice desejado e insere o nó no meio da lista, ajustando os ponteiros dos nós vizinhos.
+
+<br>
+<br>
+<br>
+
+- clear
+
+```
+void clear() {
+  int_node* current = head;
+  while(current) {
+    int_node* next_node = current->next;
+    delete current;
+    current = next_node;
+  }
+  head = tail = nullptr;
+  size_ = 0;
+}
+```
+
+O método `clear` remove todos os elementos da lista. Ele percorre a lista a partir do primeiro nó (`head`), exclui cada nó e ajusta o ponteiro `head` para `nullptr`, além de redefinir o tamanho da lista para 0.
+
+<br>
+<br>
+<br>
+
+- push_back
+
+```
+void push_back(int value) {
+  int_node* new_node = new int_node;
+  new_node->value = value;
+  new_node->next = nullptr;
+
+  if(tail) {
+    new_node->prev = tail;
+    tail->next = new_node;
+  } else {
+    new_node->prev = nullptr;
+    head = new_node;
+  }
+
+  tail = new_node;
+  size_++;
+}
+```
+
+O método `push_back` adiciona um novo valor ao final da lista. Ele cria um novo nó com o valor fornecido, ajusta os ponteiros para garantir que o novo nó seja adicionado ao final da lista e incrementa o tamanho da lista.
+
+- push_front
+
+```
+void push_front(int value) {
+  int_node* new_node = new int_node;
+  new_node->value = value;
+  new_node->prev = nullptr;
+  
+  if(head) {
+    new_node->next = head;
+    head->prev = new_node;
+  } else {
+    new_node->next = nullptr;
+    tail = new_node;
+  }
+
+  head = new_node;
+  size_++;
+}
+```
+
+O método `push_front` adiciona um novo valor no início da lista. Ele cria um novo nó com o valor fornecido, ajusta os ponteiros para garantir que o novo nó seja adicionado no início da lista e incrementa o tamanho da lista.
+
+<br>
+<br>
+<br>
+
+- pop_back
+
+```
+bool pop_back() {
+  if(size_ == 0) {
+    return false;
+  }
+
+  int_node* temp = tail;
+  tail = tail->prev;
+  if(tail) {
+    tail->next = nullptr;
+  } else {
+    head = nullptr;
+  }
+
+  delete temp;
+  --size_;
+  return true;
+}
+```
+
+O método `pop_back` remove o último valor da lista. Ele verifica se o tamanho da lista é maior que 0. Se for, ele ajusta o ponteiro `tail` para o nó anterior e exclui o último nó, decrementando o tamanho da lista.
+
+<br>
+<br>
+<br>
+
+- pop_front
+
+```
+bool pop_front() {
+  if(size_ == 0) {
+    return false;
+  }
+
+  int_node* temp = head;
+  head = head->next;
+  if(head) {
+    head->prev = nullptr;
+  } else {
+    tail = nullptr;
+  }
+
+  delete temp;
+  --size_;
+  return true;
+}
+```
+
+O método `pop_front` remove o primeiro valor da lista. Ele verifica se o tamanho da lista é maior que 0. Se for, ele ajusta o ponteiro `head` para o próximo nó e exclui o primeiro nó, decrementando o tamanho da lista.
+
+<br>
+<br>
+<br>
+
+- back
+
+```
+int back() {
+  return tail ? tail->value : -1;
+}
+```
+
+O método `back` retorna o valor do último nó da lista. Se a lista estiver vazia, retorna -1.
+
+<br>
+<br>
+<br>
+
+- front
+
+```
+int front() {
+  return head ? head->value : -1;
+}
+```
+
+O método `front` retorna o valor do primeiro nó da lista. Se a lista estiver vazia, retorna -1.
+
+<br>
+<br>
+<br>
+
+- remove
+
+```
+bool remove(int value) {
+  int_node* current = head;
+  while(current) {
+    if(current->value == value) {
+      if(current->prev) {
+        current->prev->next = current->next;
+      } else {
+        head = current->next;
+      }
+
+      if(current->next) {
+        current->next->prev = current->prev;
+      } else {
+        tail = current->prev;
+      }
+
+      delete current;
+      --size_;
+      return true;
+    }
+    current = current->next;
+  }
+  return false;
+}
+```
+
+O método `remove` remove a primeira ocorrência do valor especificado da lista. Ele percorre a lista, encontra o nó com o valor especificado, ajusta os ponteiros dos nós vizinhos e exclui o nó. Decrementa o tamanho da lista e retorna `true` se o valor foi encontrado e removido. Caso contrário, retorna `false`.
+
+<br>
+<br>
+<br>
+
+- find
+
+```
+int find(int value) {
+  int_node* current = head;
+  unsigned int index = 0;
+  while(current) {
+    if(current->value == value) {
+      return index;
+    }
+    current = current->next;
+    ++index;
+  }
+  return -1;
+}
+```
+
+O método `find` busca por um valor específico na lista. Ele percorre a lista e retorna o índice do nó que contém o valor. Se o valor não for encontrado, retorna `-1`.
+
+- count
+
+```
+int count(int value) {
+  int count = 0;
+  int_node* current = head;
+  while(current) {
+    if(current->value == value) {
+      ++count;
+    }
+    current = current->next;
+  }
+  return count;
+}
+```
+
+O método `count` conta quantas vezes um valor específico aparece na lista. Ele percorre a lista e incrementa um contador sempre que encontra o valor. No final, retorna o valor do contador.
+
+- sum
+
+```
+int sum() {
+  int_node* current = head;
+  int sum = 0;
+
+  for(int i = 0; i < size_; i++) {
+    sum += current->value;
+    current = current->next;
+  }
+  return sum;
+}
+```
+
+O método `sum` calcula a soma de todos os valores na lista. Ele percorre a lista e adiciona cada valor à variável `sum`. No final, retorna o valor de `sum`.
