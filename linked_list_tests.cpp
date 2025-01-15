@@ -104,5 +104,9 @@ int main() {
 
   cout << '\n' << endl;
 
+   cout << "Valor do index do valor (10) no array:  " << list.find(10) << endl;
+
+  cout << '\n' << endl;
+
   return 0;
 }

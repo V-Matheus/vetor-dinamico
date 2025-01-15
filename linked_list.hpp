@@ -238,6 +238,14 @@ bool remove(int value) {
   }
 } // Remove value do vetor caso esteja presente
 int find(int value) {
+  int_node* current = head;
+  for(int i = 0; i <  size_; i++) {
+    if(current->value == value) {
+      return i;
+    }
+    current = current->next;
+  }
+  return -1;
 } // Retorna o índice de value, −1 caso value não esteja presente
 int count(int value) {
 } // Retorna quantas vezes value occorre no vetor
