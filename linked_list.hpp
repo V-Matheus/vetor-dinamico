@@ -73,7 +73,56 @@ bool insert_at(unsigned int index, int value) {
   size_++;
   return true; 
 } // Insere elemento no índice index
-bool remove_at(unsigned int index) {} // Remove elemento do índice index
+bool remove_at(unsigned int index) {
+ if (index >= size_) {
+        return false;
+  }
+
+  int_node* to_delete = nullptr;
+  
+  if(size == 1) {
+    to_delete = head; 
+    head = nullptr;    
+    tail = nullptr; 
+    delete to_delete;  
+    size_--;         
+    return true;
+  }
+
+  if(index == 0) {
+    to_delete = head;
+    head = head->next;
+    delete to_delete;
+    size_--;
+    return true;
+  }
+
+  if(index == size_ - 1 ) {
+    to_delete = tail;
+    tail = tail->prev;
+     tail->next = nullptr; 
+    delete to_delete;
+    size_--;
+    return true;
+  }
+
+  int_node* current = head;
+  for(unsigned int i = 0; i == index; i++) {
+    current = current->next;
+  }
+
+ if (current->prev != nullptr) {
+        current->prev->next = current->next;
+  }
+
+  if (current->next != nullptr) {
+    current->next->prev = current->prev;
+  }
+
+  delete to_delete;
+  size_--;
+  return true;
+} // Remove elemento do índice index
 int get_at(unsigned int index) {} // Retorna elemento no índice index,
 
 // −1 se índice inválido
