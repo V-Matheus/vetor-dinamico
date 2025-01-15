@@ -43,9 +43,11 @@ bool insert_at(unsigned int index, int value) {
    if (head) {
         head->prev = new_node;
     }
-
-    tail = new_node; 
+ 
     head = new_node;
+     if (tail == nullptr) { 
+            tail = new_node;
+        }
     size_++;
     return true;
   }
@@ -53,10 +55,11 @@ bool insert_at(unsigned int index, int value) {
   if (index == size_) {
     new_node->next = nullptr;
     new_node->prev = tail;
+
     if(tail) {
       tail->next = new_node;
     }
-    head = new_node;
+
     tail = new_node;
     size_++;
     return true;
@@ -70,6 +73,7 @@ bool insert_at(unsigned int index, int value) {
   new_node->prev = current;
   new_node->next = current->next;
   current->next = new_node;
+  
   size_++;
   return true; 
 } // Insere elemento no índice index
@@ -80,7 +84,7 @@ bool remove_at(unsigned int index) {
 
   int_node* to_delete = nullptr;
   
-  if(size == 1) {
+  if(size_ == 1) {
     to_delete = head; 
     head = nullptr;    
     tail = nullptr; 
@@ -107,7 +111,7 @@ bool remove_at(unsigned int index) {
   }
 
   int_node* current = head;
-  for(unsigned int i = 0; i == index; i++) {
+  for(unsigned int i = 0; i < index; i++) {
     current = current->next;
   }
 
@@ -123,20 +127,42 @@ bool remove_at(unsigned int index) {
   size_--;
   return true;
 } // Remove elemento do índice index
-int get_at(unsigned int index) {} // Retorna elemento no índice index,
+int get_at(unsigned int index) {
+  if (index >= size_) {
+        return -1;
+  }
+
+  int_node* current = head;
+  for(unsigned int i = 0; i < index; i++) {
+    current = current->next;
+  }
+
+  return current->value;
+
+} // Retorna elemento no índice index,
 
 // −1 se índice inválido
 
 void clear() {} // Remove todos os elementos, deixando o vetor no estado inicial
-void push_back(int value) {} // Adiciona um elemento no ``final'' do vetor
-void push_front(int value) {} // Adiciona um elemento no ``início'' do vetor
-bool pop_back() {} // Remove um elemento do ``final'' do vetor
-bool pop_front() {} // Remove um elemento do ``início'' do vetor
-int back(){} // Retorna o elemento do ``final'' do vetor
-int front(){} // Retorna o elemento do ``início'' do vetor
-bool remove(int value) {} // Remove value do vetor caso esteja presente
-int find(int value) {} // Retorna o índice de value, −1 caso value não esteja presente
-int count(int value) {} // Retorna quantas vezes value occorre no vetor
-int sum() {} // Retorna a soma dos elementos do vetor
+void push_back(int value) {
+} // Adiciona um elemento no ``final'' do vetor
+void push_front(int value) {
+} // Adiciona um elemento no ``início'' do vetor
+bool pop_back() {
+} // Remove um elemento do ``final'' do vetor
+bool pop_front() {
+} // Remove um elemento do ``início'' do vetor
+int back(){
+} // Retorna o elemento do ``final'' do vetor
+int front(){
+} // Retorna o elemento do ``início'' do vetor
+bool remove(int value) {
+} // Remove value do vetor caso esteja presente
+int find(int value) {
+} // Retorna o índice de value, −1 caso value não esteja presente
+int count(int value) {
+} // Retorna quantas vezes value occorre no vetor
+int sum() {
+} // Retorna a soma dos elementos do vetor
 };
 #endif // __LINKED_LIST_IFRN__
