@@ -168,6 +168,15 @@ void push_back(int value) {
   size_++;
 } // Adiciona um elemento no ``final'' do vetor
 void push_front(int value) {
+  int_node* new_node = new int_node;
+  new_node->value = value;
+  new_node->prev = nullptr;
+  new_node->next = head;
+  if(head) {
+    head->prev = new_node;
+  }
+  head = new_node;
+  size_++;
 } // Adiciona um elemento no ``início'' do vetor
 bool pop_back() {
 } // Remove um elemento do ``final'' do vetor

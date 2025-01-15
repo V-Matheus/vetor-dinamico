@@ -41,5 +41,17 @@ int main() {
     }
   cout << endl;
 
+    cout << "Inserindo elementos na primeira posicao do array" << endl;
+
+  list.push_front(0);
+  list.push_front(-10);
+  list.push_front(-20);
+
+   cout << "Array apos insercoes:" << endl;
+    for (unsigned int i = 0; i < list.size(); ++i) {
+        cout << list.get_at(i) << " ";
+    }
+  cout << endl;
+
     return 0;
 }
