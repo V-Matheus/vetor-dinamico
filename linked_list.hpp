@@ -179,6 +179,17 @@ void push_front(int value) {
   size_++;
 } // Adiciona um elemento no ``início'' do vetor
 bool pop_back() {
+  if (tail == nullptr) {
+    return false;
+  }
+
+  int_node* to_delete = tail;
+  tail = tail->prev;
+  tail->next = nullptr;
+
+  delete to_delete;
+  size_--;
+  return true;
 } // Remove um elemento do ``final'' do vetor
 bool pop_front() {
 } // Remove um elemento do ``início'' do vetor

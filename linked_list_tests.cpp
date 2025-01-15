@@ -29,6 +29,8 @@ int main() {
     }
   cout << endl;
 
+  cout << '\n' << endl;
+
   cout << "Inserindo elementos na última posicao do array" << endl;
 
   list.push_back(10);
@@ -41,17 +43,33 @@ int main() {
     }
   cout << endl;
 
-    cout << "Inserindo elementos na primeira posicao do array" << endl;
+  cout << '\n' << endl;
+
+  cout << "Inserindo elementos na primeira posicao do array" << endl;
 
   list.push_front(0);
   list.push_front(-10);
   list.push_front(-20);
 
-   cout << "Array apos insercoes:" << endl;
-    for (unsigned int i = 0; i < list.size(); ++i) {
-        cout << list.get_at(i) << " ";
-    }
+  cout << "Array apos insercoes:" << endl;
+  for (unsigned int i = 0; i < list.size(); ++i) {
+      cout << list.get_at(i) << " ";
+  }
   cout << endl;
+
+  cout << '\n' << endl;
+
+  cout << "Removendo elementos na ultima posicao do array" << endl;
+
+  list.pop_back();
+
+    cout << "Array apos insercoes:" << endl;
+  for (unsigned int i = 0; i < list.size(); ++i) {
+      cout << list.get_at(i) << " ";
+  }
+  cout << endl;
+
+  cout << '\n' << endl;
 
     return 0;
 }
