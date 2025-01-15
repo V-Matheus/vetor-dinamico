@@ -15,7 +15,7 @@ linked_list() {
   size_ = 0;
 }
 ~linked_list() {
-  
+
 }
 unsigned int size() {
   return size_;
@@ -30,7 +30,48 @@ double percent_occupied() {
 // memória usada.
 
 bool insert_at(unsigned int index, int value) {
+  if(index > size_) {
+    return false;
+  }
+  int_node* new_node = new int_node;
+  new_node->value = value;
 
+  if(index == 0) {
+    new_node->next = head;
+    new_node->prev = nullptr;
+
+   if (head) {
+        head->prev = new_node;
+    }
+
+    tail = new_node; 
+    head = new_node;
+    size_++;
+    return true;
+  }
+
+  if (index == size_) {
+    new_node->next = nullptr;
+    new_node->prev = tail;
+    if(tail) {
+      tail->next = new_node;
+    }
+    head = new_node;
+    tail = new_node;
+    size_++;
+    return true;
+  }
+
+  int_node* current = head;
+  for(unsigned int i = 0; i < index; i++) {
+    current = current->next;
+  }
+
+  new_node->prev = current;
+  new_node->next = current->next;
+  current->next = new_node;
+  size_++;
+  return true; 
 } // Insere elemento no índice index
 bool remove_at(unsigned int index) {} // Remove elemento do índice index
 int get_at(unsigned int index) {} // Retorna elemento no índice index,
