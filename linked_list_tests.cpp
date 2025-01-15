@@ -125,5 +125,14 @@ int main() {
 
   cout << '\n' << endl;
 
+  cout << "Contar a soma de todos os numeros do array:  " << list.sum() << endl;
+  cout << "Array atual:" << endl;
+  for (unsigned int i = 0; i < list.size(); ++i) {
+      cout << list.get_at(i) << " ";
+  }
+  cout << endl;
+
+  cout << '\n' << endl;
+
   return 0;
 }

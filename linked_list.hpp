@@ -260,6 +260,14 @@ int count(int value) {
   return count;
 } // Retorna quantas vezes value occorre no vetor
 int sum() {
+    int_node* current = head;
+  int sum = 0;
+
+  for(int i = 0; i < size_; i++) {
+    sum += current->value;
+    current = current->next;
+  }
+  return sum;
 } // Retorna a soma dos elementos do vetor
 };
 #endif // __LINKED_LIST_IFRN__
