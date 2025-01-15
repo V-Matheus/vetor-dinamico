@@ -63,7 +63,19 @@ int main() {
 
   list.pop_back();
 
-    cout << "Array apos insercoes:" << endl;
+    cout << "Array apos remocao:" << endl;
+  for (unsigned int i = 0; i < list.size(); ++i) {
+      cout << list.get_at(i) << " ";
+  }
+  cout << endl;
+
+  cout << '\n' << endl;
+
+    cout << "Removendo elementos na primeira posicao do array" << endl;
+
+  list.pop_front();
+
+  cout << "Array apos remocao:" << endl;
   for (unsigned int i = 0; i < list.size(); ++i) {
       cout << list.get_at(i) << " ";
   }

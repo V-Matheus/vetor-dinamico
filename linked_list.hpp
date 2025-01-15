@@ -192,6 +192,17 @@ bool pop_back() {
   return true;
 } // Remove um elemento do ``final'' do vetor
 bool pop_front() {
+  if(head == nullptr) {
+    return false;
+  }
+
+  int_node*  to_delete = head;
+  head = head->next;
+  head->prev = nullptr;
+  
+  delete to_delete;
+  size_--;
+  return true;
 } // Remove um elemento do ``início'' do vetor
 int back(){
 } // Retorna o elemento do ``final'' do vetor
