@@ -795,3 +795,45 @@ int sum() {
 ```
 
 O método `sum` calcula a soma de todos os valores na lista. Ele percorre a lista e adiciona cada valor à variável `sum`. No final, retorna o valor de `sum`.
+
+# Comparação de Desempenho entre Array List e Linked List
+
+## Resultados dos Benchmarks
+
+| Operação       | Array List (s) | Linked List (s) |
+|----------------|----------------|-----------------|
+| push_back      | 0.002209       | 0.009446        |
+| insert_at      | 3.06877        | 0.098403        |
+| remove_at      | 1.52977        | 2.02811         |
+| get_at         | 0              | 18.3514         |
+| clear          | 0              | 0               |
+
+## Gráfico de Comparação
+
+![Gráfico de Comparação](graphic.png)
+
+## Explicações
+
+### push_back
+- **Array List**: O `push_back` é muito eficiente em `array_list` devido ao acesso direto ao índice e à alocação contígua de memória.
+- **Linked List**: O `push_back` é um pouco mais lento em `linked_list` devido à necessidade de atualizar os ponteiros dos nós.
+
+### insert_at
+- **Array List**: A operação `insert_at` é lenta em `array_list` porque todos os elementos após o índice de inserção precisam ser deslocados.
+- **Linked List**: A operação `insert_at` é mais eficiente em `linked_list` porque apenas os ponteiros dos nós adjacentes precisam ser atualizados.
+
+### remove_at
+- **Array List**: A operação `remove_at` é relativamente rápida em `array_list`, mas ainda requer o deslocamento dos elementos após o índice de remoção.
+- **Linked List**: A operação `remove_at` é mais lenta em `linked_list` devido à necessidade de percorrer a lista até o índice e atualizar os ponteiros dos nós.
+
+### get_at
+- **Array List**: O `get_at` é extremamente rápido em `array_list` devido ao acesso direto ao índice.
+- **Linked List**: O `get_at` é muito lento em `linked_list` porque requer a iteração através dos nós até o índice desejado.
+
+### clear
+- **Array List**: A operação `clear` é rápida em ambas as implementações, pois apenas redefine o tamanho e a capacidade.
+- **Linked List**: A operação `clear` é rápida em `linked_list` porque apenas redefine os ponteiros de cabeça e cauda e libera a memória dos nós.
+
+## Conclusão
+
+A escolha entre `array_list` e `linked_list` depende do tipo de operações que você precisa realizar com mais frequência. Se você precisa de acesso rápido por índice, `array_list` é a melhor escolha. Se você precisa inserir ou remover elementos frequentemente em posições arbitrárias, `linked_list` pode ser mais eficiente.
